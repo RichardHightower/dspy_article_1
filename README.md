@@ -1,0 +1,208 @@
+# DSPy Example Project
+
+This project contains all the example code from the article "Stop Wrestling with Prompts: How DSPy Transforms Fragile AI into Reliable Software".
+
+## Prerequisites
+
+- Python 3.12 (managed via pyenv)
+- Poetry for dependency management
+- Go Task for build automation
+- API key for OpenAI or Anthropic (Claude) OR Ollama installed locally
+
+## Setup
+
+1. Clone this repository
+2. Copy `.env.example` to `.env` and configure your LLM provider:
+   ```bash
+   cp .env.example .env
+   ```
+3. Edit `.env` to select your provider and model:
+   - For OpenAI: Set `LLM_PROVIDER=openai` and add your API key
+   - For Claude: Set `LLM_PROVIDER=anthropic` and add your API key
+   - For Ollama: Set `LLM_PROVIDER=ollama` (install Ollama and pull phi3 model first)
+4. Run the setup task:
+   ```bash
+   task setup
+   ```
+
+## Supported LLM Providers
+
+### OpenAI
+- Model: `gpt-4-turbo-preview`
+- Requires: OpenAI API key
+
+### Anthropic (Claude)
+- Model: `claude-3-opus-20240229`
+- Requires: Anthropic API key
+
+### Ollama (Local)
+- Model: `phi3:latest`
+- Requires: Ollama installed and phi3 model pulled
+- Install: `brew install ollama` (macOS) or see [ollama.ai](https://ollama.ai)
+- Pull model: `ollama pull phi3`
+
+## Project Structure
+
+```
+.
+├── src/
+│   ├── __init__.py
+│   ├── config.py            # LLM configuration
+│   ├── main.py              # Entry point with all examples
+│   ├── basic_qa.py          # Simple Q&A module
+│   ├── code_explainer.py    # Code explanation module
+│   ├── math_solver.py       # Chain-of-thought math solver
+│   ├── code_analyzer.py     # Code analysis pipeline
+│   └── advanced_examples.py # Advanced DSPy features
+├── tests/
+│   └── test_modules.py      # Unit tests for modules
+├── pyproject.toml           # Poetry configuration
+├── Taskfile.yml            # Task automation
+└── README.md               # This file
+```
+
+## Running Examples
+
+Run all examples:
+```bash
+task run
+```
+
+Or run individual modules:
+```bash
+poetry run python src/basic_qa.py
+poetry run python src/code_explainer.py
+poetry run python src/math_solver.py
+poetry run python src/code_analyzer.py
+```
+
+## Available Tasks
+
+- `task setup` - Set up Python environment and install dependencies
+- `task run` - Run the main example script
+- `task test` - Run unit tests
+- `task format` - Format code with Black and Ruff
+- `task clean` - Clean up generated files
+
+## Example Output
+
+The examples demonstrate:
+1. Basic Q&A with DSPy signatures
+2. Code explanation with multiple outputs
+3. Chain-of-thought reasoning for math problems
+4. Complex pipelines for code analysis
+5. Advanced features like optimization and async operations
+
+## Troubleshooting
+
+- **Ollama connection error**: Make sure Ollama is running (`ollama serve`)
+- **API key errors**: Check your `.env` file has the correct keys
+- **Model not found**: For Ollama, ensure you've pulled the model (`ollama pull phi3`)
+
+Here are the instructions to set up the virtual environment for this DSPy project:
+
+# Virtual Environment Setup Instructions
+
+### Prerequisites
+1. Install pyenv (if not already installed):
+   ```bash
+   # macOS
+   brew install pyenv
+   
+   # Linux
+   curl https://pyenv.run | bash
+   ```
+
+2. Add pyenv to your shell:
+   ```bash
+   # Add to ~/.zshrc or ~/.bashrc
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+   echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+   
+   # Reload shell
+   source ~/.zshrc
+   ```
+
+### Setup Steps
+
+1. **Install Python 3.12.8**:
+   ```bash
+   pyenv install 3.12.8
+   ```
+
+2. **Navigate to your project directory**:
+   ```bash
+   cd /Users/you/src/dspy_article_1
+   ```
+
+3. **Set local Python version**:
+   ```bash
+   pyenv local 3.12.2
+   ```
+
+4. **Install Poetry** (if not installed):
+   ```bash
+   curl -sSL https://install.python-poetry.org | python3 -
+   ```
+
+5. **Install project dependencies**:
+   ```bash
+   poetry install
+   ```
+
+6. **Activate the virtual environment**:
+   ```bash
+   poetry config virtualenvs.in-project true
+   poetry env info --path
+
+   # This will create a virtual environment in your project directory
+   ```
+
+### Alternative: If you have Go Task installed
+Simply run:
+```bash
+task setup
+```
+
+### Configure your LLM provider
+
+1. **Copy the example env file**:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit .env and set your provider**:
+   ```bash
+   # For OpenAI
+   LLM_PROVIDER=openai
+   OPENAI_API_KEY=your-key-here
+   
+   # For Anthropic/Claude
+   LLM_PROVIDER=anthropic
+   ANTHROPIC_API_KEY=your-key-here
+   
+   # For Ollama (local)
+   LLM_PROVIDER=ollama
+   # Make sure Ollama is running: ollama serve
+   # Pull the model: ollama pull phi3
+   ```
+
+### Verify setup
+```bash
+# Check Python version
+python --version  # Should show 3.12.2
+
+# Test imports
+python -c "import dspy; print('DSPy installed successfully')"
+```
+
+### Run the examples
+```bash
+# Run all examples
+poetry run python src/main.py
+
+# Or run individual examples
+poetry run python src/basic_qa.py
+poetry run python src/code_explainer.py
+```

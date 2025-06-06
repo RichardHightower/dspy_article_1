@@ -1,0 +1,41 @@
+version: '3'
+
+tasks:
+  setup:
+    desc: "Set up the Python environment"
+    cmds:
+      - pyenv install -s 3.12.8
+      - pyenv local 3.12.8
+      - poetry install
+
+  run:
+    desc: "Run the main example"
+    cmds:
+      - poetry run python src/main.py
+
+  test:
+    desc: "Run tests"
+    cmds:
+      - poetry run pytest tests/
+
+  format:
+    desc: "Format code"
+    cmds:
+      - poetry run black src/ tests/
+      - poetry run ruff check --fix src/ tests/
+
+  clean:
+    desc: "Clean up generated files"
+    cmds:
+      - find . -type d -name "__pycache__" -exec rm -rf {} +
+      - find . -type f -name "*.pyc" -delete
+      - rm -rf .pytest_cache
+      - rm -rf .ruff_cache
+
+  all:
+    desc: "Run all tasks"
+    cmds:
+      - task: setup
+      - task: format
+      - task: test
+      - task: run
