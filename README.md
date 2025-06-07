@@ -138,7 +138,7 @@ Here are the instructions to set up the virtual environment for this DSPy projec
 
 3. **Set local Python version**:
    ```bash
-   pyenv local 3.12.2
+   pyenv local 3.12.8
    ```
 
 4. **Install Poetry** (if not installed):
@@ -162,6 +162,7 @@ Here are the instructions to set up the virtual environment for this DSPy projec
 ### Alternative: If you have Go Task installed
 Simply run:
 ```bash
+brew install go-task
 task setup
 ```
 
@@ -177,21 +178,26 @@ task setup
    # For OpenAI
    LLM_PROVIDER=openai
    OPENAI_API_KEY=your-key-here
+   LLM_MODEL=your_model-here  # e.g., gpt-41
    
    # For Anthropic/Claude
    LLM_PROVIDER=anthropic
    ANTHROPIC_API_KEY=your-key-here
+   LLM_MODEL=claude-3-7-sonnet-latest
    
    # For Ollama (local)
    LLM_PROVIDER=ollama
    # Make sure Ollama is running: ollama serve
    # Pull the model: ollama pull phi3
+   LLM_MODEL=phi4:latest
+   
+   
    ```
 
 ### Verify setup
 ```bash
 # Check Python version
-python --version  # Should show 3.12.2
+python --version  # Should show 3.12.8
 
 # Test imports
 python -c "import dspy; print('DSPy installed successfully')"
