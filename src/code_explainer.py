@@ -1,6 +1,7 @@
 """Code explanation module from the article."""
 
 import dspy
+from config import configure_llm
 
 
 class CodeExplanation(dspy.Signature):
@@ -24,6 +25,9 @@ class CodeExplainer(dspy.Module):
 def main():
     """Run the code explainer example."""
     print("=== Code Explainer Module Example ===\\n")
+    
+    # Configure the language model
+    configure_llm()
 
     # Try it out
     explainer = CodeExplainer()

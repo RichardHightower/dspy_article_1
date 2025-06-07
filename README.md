@@ -157,6 +157,10 @@ Here are the instructions to set up the virtual environment for this DSPy projec
    poetry env info --path
 
    # This will create a virtual environment in your project directory
+   # /Users/you/src/dspy_article_1/.venv
+   chmod +x .venv/bin/activate
+   source .venv/bin/activate
+   
    ```
 
 ### Alternative: If you have Go Task installed
@@ -211,4 +215,7 @@ poetry run python src/main.py
 # Or run individual examples
 poetry run python src/basic_qa.py
 poetry run python src/code_explainer.py
+poetry run python src/math_solver.py
+poetry run python src/code_analyzer.py
+poetry run python src/advanced_examples.py
 ```

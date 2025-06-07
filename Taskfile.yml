@@ -12,6 +12,10 @@ tasks:
       - pyenv install -s 3.12.8
       - pyenv local 3.12.8
       - poetry install
+      - poetry config virtualenvs.in-project true
+      - echo poetry env info --path
+      - chmod +x .venv/bin/activate
+      - source .venv/bin/activate
 
   run:
     desc: "Run the main example"

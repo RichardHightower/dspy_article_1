@@ -1,6 +1,7 @@
 """Chain-of-thought math solver from the article."""
 
 import dspy
+from config import configure_llm
 
 
 class MathReasoning(dspy.Signature):
@@ -24,6 +25,9 @@ class MathSolver(dspy.Module):
 def main():
     """Run the math solver example."""
     print("=== Chain-of-Thought Math Solver Example ===\\n")
+    
+    # Configure the language model
+    configure_llm()
 
     # Solve problems
     solver = MathSolver()

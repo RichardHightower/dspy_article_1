@@ -4,6 +4,7 @@ import dspy
 from pydantic import BaseModel, Field
 from typing import List
 import asyncio
+from config import configure_llm
 
 
 # Structured Output Example
@@ -46,9 +47,7 @@ def search_documentation(query: str) -> str:
 class DocumentationHelper(dspy.Module):
     def __init__(self):
         super().__init__()
-        self.answer = dspy.ChainOfThought(
-            "question -> answer: Answer using documentation search if needed"
-        )
+        self.answer = dspy.ChainOfThought("question -> answer")
 
     def forward(self, question):
         # DSPy can use the tool when needed
@@ -101,6 +100,9 @@ async def analyze_many_texts(texts: List[str]):
 def main():
     """Demonstrate advanced features."""
     print("=== Advanced DSPy Features ===\\n")
+    
+    # Configure the language model
+    configure_llm()
 
     # 1. Structured Output
     print("1. Structured Output Example:")

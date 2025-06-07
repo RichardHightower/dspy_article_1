@@ -1,6 +1,7 @@
 """Code analysis pipeline from the article."""
 
 import dspy
+from config import configure_llm
 
 
 class CodeAnalysisPipeline(dspy.Module):
@@ -36,6 +37,9 @@ class CodeAnalysisPipeline(dspy.Module):
 def main():
     """Run the code analyzer example."""
     print("=== Code Analysis Pipeline Example ===\\n")
+    
+    # Configure the language model
+    configure_llm()
 
     # Analyze some problematic code
     analyzer = CodeAnalysisPipeline()

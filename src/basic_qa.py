@@ -1,6 +1,7 @@
 """Basic question-answering module from the article."""
 
 import dspy
+from config import configure_llm
 
 
 # Define what your module expects and returns
@@ -24,6 +25,9 @@ class QAModule(dspy.Module):
 def main():
     """Run the basic QA example."""
     print("=== Basic Q&A Module Example ===\\n")
+
+    # Configure the language model
+    configure_llm()
 
     # Use it like a regular Python function
     qa = QAModule()
