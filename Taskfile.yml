@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  default:
+    desc: "Default task - runs all tasks"
+    cmds:
+      - task: all
+
   setup:
     desc: "Set up the Python environment"
     cmds:
@@ -12,11 +17,17 @@ tasks:
     desc: "Run the main example"
     cmds:
       - poetry run python src/main.py
+    env:
+      LLM_PROVIDER: ollama
+      LLM_MODEL: phi4:latest
 
   test:
     desc: "Run tests"
     cmds:
       - poetry run pytest tests/
+    env:
+      LLM_PROVIDER: ollama
+      LLM_MODEL: phi4:latest
 
   format:
     desc: "Format code"
@@ -37,5 +48,5 @@ tasks:
     cmds:
       - task: setup
       - task: format
-      - task: test
       - task: run
+      # Tests require Ollama to be running - run separately with 'task test'
