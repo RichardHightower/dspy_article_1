@@ -230,4 +230,5 @@ poetry run python src/advanced_examples.py
 
 - [DSPy Documentation](https://github.com/stanfordnlp/dspy)
 - [Full book: "Stop Wrestling with Prompts: How DSPy Transforms Fragile AI into Reliable Software"](https://rick-hightower.notion.site/DSPy-Book-20ad6bbdbbea80e1931befaa23292c5e)
+- [DSPy Article: Stop Wrestling with Prompts](https://medium.com/@richardhightower/stop-wrestling-with-prompts-how-dspy-transforms-fragile-ai-into-reliable-software-445f8f0cc02f)
 
