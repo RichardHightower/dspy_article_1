@@ -219,3 +219,15 @@ poetry run python src/math_solver.py
 poetry run python src/code_analyzer.py
 poetry run python src/advanced_examples.py
 ```
+
+## Troubleshooting
+
+- **Ollama connection error**: Make sure Ollama is running (`ollama serve`)
+- **API key errors**: Check your `.env` file has the correct keys
+- **Model not found**: For Ollama, ensure you've pulled the model (`ollama pull phi3`)
+
+## Learn More
+
+- [DSPy Documentation](https://github.com/stanfordnlp/dspy)
+- [Full book: "Stop Wrestling with Prompts: How DSPy Transforms Fragile AI into Reliable Software"](https://rick-hightower.notion.site/DSPy-Book-20ad6bbdbbea80e1931befaa23292c5e)
+
